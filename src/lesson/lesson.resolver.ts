@@ -4,21 +4,21 @@ import { LessonService } from './lesson.service';
 import { Lesson } from './lesson.entity';
 import { CreateLessonInput } from './create-lesson.input';
 
-@Resolver((of) => LessonType)
+@Resolver(() => LessonType)
 export class LessonResolver {
   constructor(private lessonService: LessonService) {}
 
-  @Query((returns) => LessonType)
+  @Query(() => LessonType)
   getLessonById(@Args('id') id: string): Promise<Lesson> {
     return this.lessonService.getLessonById(id);
   }
 
-  @Query((returns) => [LessonType])
+  @Query(() => [LessonType])
   getLessons(): Promise<Lesson[]> {
     return this.lessonService.getLessons();
   }
 
-  @Mutation((returns) => LessonType)
+  @Mutation(() => LessonType)
   createLesson(
     @Args('createLessonInput') createLessonInput: CreateLessonInput,
   ): Promise<Lesson> {
